@@ -1,0 +1,40 @@
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/megaloman?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Jakarta
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: MYSQL
+    show-sql: false
+    properties:
+      hibernate:
+        cacheable: false
+        cacheMode: REFRESH
+        cache:
+          region:
+            factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+          use_second_level_cache: false
+          use_query_cache: false
+        generate_statistics: true
+        jdbc:
+          batch_size: 50
+        order_updates: true
+      javax:
+        persistence.sharedCache.mode: ENABLE_SELECTIVE
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+
+token:
+  signing:
+    key: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351
