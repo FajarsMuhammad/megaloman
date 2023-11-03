@@ -5,9 +5,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.kinumz.security.dao.request.SignUpRequest;
-import com.kinumz.security.dao.request.SigninRequest;
-import com.kinumz.security.dao.response.JwtAuthenticationResponse;
+import com.kinumz.security.dto.request.SignUpRequest;
+import com.kinumz.security.dto.request.SigninRequest;
+import com.kinumz.security.dto.response.JwtAuthenticationResponse;
 import com.kinumz.security.model.Role;
 import com.kinumz.security.model.User;
 import com.kinumz.security.repository.UserRepository;

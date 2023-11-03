@@ -1,4 +1,4 @@
-package com.kinumz.security.dao.request;
+package com.kinumz.security.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

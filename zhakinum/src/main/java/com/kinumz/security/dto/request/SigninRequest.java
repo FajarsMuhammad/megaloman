@@ -1,4 +1,4 @@
-package com.kinumz.security.dao.response;
+package com.kinumz.security.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwtAuthenticationResponse {
+public class SigninRequest {
 
-    private String token;
+    private String username;
+
+    private String password;
 
 }

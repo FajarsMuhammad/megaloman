@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kinumz.security.dao.request.SignUpRequest;
-import com.kinumz.security.dao.request.SigninRequest;
-import com.kinumz.security.dao.response.JwtAuthenticationResponse;
+import com.kinumz.security.dto.request.SignUpRequest;
+import com.kinumz.security.dto.request.SigninRequest;
+import com.kinumz.security.dto.response.JwtAuthenticationResponse;
 import com.kinumz.security.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
