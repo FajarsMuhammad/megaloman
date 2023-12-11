@@ -1,16 +1,13 @@
 package com.kinumz.security.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Value
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class JwtAuthenticationResponse {
 
-    private String token;
-
+    String token;
+    String username;
+    String name;
 }
