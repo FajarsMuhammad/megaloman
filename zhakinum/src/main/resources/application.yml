@@ -23,7 +23,7 @@ spring:
             factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
           use_second_level_cache: false
           use_query_cache: false
-        generate_statistics: true
+        generate_statistics: false
         jdbc:
           batch_size: 50
         order_updates: true

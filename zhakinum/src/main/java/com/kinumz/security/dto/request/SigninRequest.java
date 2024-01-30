@@ -1,18 +1,14 @@
 package com.kinumz.security.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
-@Data
+@Value
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class SigninRequest {
 
-    private String username;
+    String username;
 
-    private String password;
+    String password;
 
 }

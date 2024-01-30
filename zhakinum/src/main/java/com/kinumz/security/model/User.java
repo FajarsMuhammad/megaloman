@@ -3,6 +3,7 @@ package com.kinumz.security.model;
 import com.kinumz.common.model.AuditingEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,8 +37,8 @@ public class User extends AuditingEntity implements UserDetails {
 
     private String name;
 
-    @Enumerated
-    @Column(columnDefinition = "varchar", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    @Column(columnDefinition = "tinyint", nullable = false)
     private Role role;
 
     @Override
