@@ -1,6 +1,8 @@
 package com.kinumz.security.model;
 
 import com.kinumz.common.model.AuditingEntity;
+import com.kinumz.common.model.Company;
+import com.kinumz.employee.Employee;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,6 +42,10 @@ public class User extends AuditingEntity implements UserDetails {
     @Enumerated(EnumType.ORDINAL)
     @Column(columnDefinition = "tinyint", nullable = false)
     private Role role;
+
+    private Company company;
+
+    private Employee employee;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

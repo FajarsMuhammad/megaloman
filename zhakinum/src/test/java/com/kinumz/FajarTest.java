@@ -1,16 +1,30 @@
 package com.kinumz;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 
 public class FajarTest {
 
   @Test
-  public void japs(){
+  public void japs() throws IOException {
     String[] value = new String[]{"Vienna-Prague 312","Prague-Zurich 676"};
    // String[] value = new String[]{};
-    System.out.println(calculator(value)); ;
+    System.out.println(calculator(value));
+
+    Thread th = new Thread();
+    Socket socket = new ServerSocket(1234).accept();
+
+
+  }
+
+  public OptionalInt multiply (int start, int finish){
+    return IntStream.of(start, finish).reduce((a,b)-> a*b);
   }
 
   public String calculator( String[] distancesList ) {

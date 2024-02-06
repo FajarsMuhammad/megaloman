@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_USER: 'megaloman_db'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - mysql-db:/var/lib/mysql
+# POSTGRES SQL
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: megalomancode
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  mysql-db:
+  postgres:
+
+networks:
+  postgres:
+    driver: bridge
+
