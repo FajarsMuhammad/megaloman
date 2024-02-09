@@ -1,0 +1,40 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: customers
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/customer
+    username: 'megalomancode'
+    password: 'password'
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+  kafka:
+    customer-topic: megaloman-customer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+application:
+  config:
+    fraud-url: http://localhost:8222/api/v1/frauds
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

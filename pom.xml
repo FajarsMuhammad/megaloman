@@ -15,6 +15,7 @@
     <module>fraud-service</module>
     <module>notification-service</module>
     <module>base-domains</module>
+    <module>auth-service</module>
   </modules>
 
   <parent>
