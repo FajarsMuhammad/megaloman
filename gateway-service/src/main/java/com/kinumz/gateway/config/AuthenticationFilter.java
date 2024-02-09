@@ -21,7 +21,6 @@ public class AuthenticationFilter implements GatewayFilter {
 
     private final JwtUtils jwtUtils;
 
-
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
@@ -36,8 +35,8 @@ public class AuthenticationFilter implements GatewayFilter {
             if (jwtUtils.isExpired(token)) {
                 return onError(exchange, HttpStatus.UNAUTHORIZED);
             }
-
         }
+        
         return chain.filter(exchange);
     }
 

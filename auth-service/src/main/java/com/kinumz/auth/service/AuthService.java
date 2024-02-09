@@ -14,17 +14,8 @@ public class AuthService {
     private final UserClient userClient;
 
     public JwtAuthenticationResponse signup(SignUpRequest request) {
-        /**
-         * TODO:
-         * do validation if user exists in DB
-         *
-         */
-
         var user = userClient.getUser(request.getUsername());
-
         var jwt = jwtUtil.generateToken(user, "ACCESS");
         return JwtAuthenticationResponse.builder().token(jwt).build();
     }
-
-
 }
