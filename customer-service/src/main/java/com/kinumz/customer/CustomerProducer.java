@@ -1,6 +1,5 @@
 package com.kinumz.customer;
 
-import com.kinumz.domain.CustomerEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.NewTopic;

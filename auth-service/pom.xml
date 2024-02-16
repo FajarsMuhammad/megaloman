@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>auth-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Auth Service</name>
+	<name>auth-service</name>
 	<description>Auth Service</description>
 	<dependencies>
 <!--		<dependency>-->

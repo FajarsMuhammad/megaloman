@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>gateway-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gateway</name>
+	<name>gateway-service</name>
 	<description>gateway</description>
 	<properties>
 		<java.version>21</java.version>

@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+  #mysql
   db:
     container_name: mysql
     image: mysql:8.0
@@ -27,8 +28,76 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - spring-boot-net
     restart: unless-stopped
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  broker:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: broker
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  discovery-service:
+    container_name: discovery-service
+    image: app/discovery-service:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - spring-boot-net
+  gateway-service:
+    container_name: gateway-service
+    image: app/gateway-service:latest
+    ports:
+      - "8222:8222"
+    depends_on:
+      - zipkin
+      - discovery-service
+    networks:
+      - spring-boot-net
+#  customer-service:
+#    container_name: customer-service
+#    image: app/customer-service:latest
+#    ports:
+#      - "8090:8090"
+#    depends_on:
+#      - zipkin
+#      - discovery-service
+#      - gateway-service
+#      - postgres
+#      - broker
+#    networks:
+#      - spring-boot-net
+#  fraud-service:
+#    container_name: fraud-service
+#    image: app/fraud-service:latest
+#    ports:
+#      - "8082:8082"
+#    depends_on:
+#      - zipkin
+#      - discovery-service
+#      - gateway-service
+#      - postgres
+#    networks:
+#      - spring-boot-net
 
   zipkin:
     container_name: zipkin
@@ -47,4 +116,7 @@ networks:
     driver: bridge
   zipkin:
     driver: bridge
+  spring-boot-net:
+    driver: bridge
+
 

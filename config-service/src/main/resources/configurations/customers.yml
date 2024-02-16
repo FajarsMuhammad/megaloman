@@ -5,7 +5,7 @@ spring:
     name: customers
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://localhost:5432/customer #change to container name on host
     username: 'megalomancode'
     password: 'password'
   jpa:

@@ -1,5 +1,28 @@
+server:
+  port: 8082
 spring:
   application:
-    name: frauds
-  config:
-    import: optional:configserver:http://localhost:8888
+    name: fraud-service
+#  config:
+#    import: optional:configserver:http://localhost:8888
+datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/fraud
+  username: 'megalomancode'
+  password: 'password'
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+management:
+  tracing:
+    sampling:
+      probability: 1.0
