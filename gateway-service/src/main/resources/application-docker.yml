@@ -1,0 +1,37 @@
+server:
+  port: 8222
+eureka:
+  client:
+    register-with-eureka: false
+spring:
+  application:
+    name: gateway
+#  config:
+#    import: optional:configserver:http://localhost:8888
+
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: customers
+          uri: http://customer-service:8090
+          predicates:
+            - Path=/api/v1/customers/** #to redirect http://localhost:8090 to /api/v1/customers/**
+        - id: frauds
+          uri: http://fraud-service:8081
+          predicates:
+            - Path=/api/v1/frauds/**
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+token:
+  signing:
+    key: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351

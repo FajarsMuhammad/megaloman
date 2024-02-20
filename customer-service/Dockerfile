@@ -1,7 +1,7 @@
 FROM openjdk:21-jdk
 
-COPY target/customer-service.jar /app/customer-service.jar
+COPY target/customer-service.jar customer-service.jar
 
-EXPOSE 9000
+EXPOSE 8090
 
-CMD ["java", "-jar", "customer-service.jar"]
+CMD ["java", "-jar", "/customer-service.jar"]

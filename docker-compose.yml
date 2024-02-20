@@ -59,6 +59,8 @@ services:
   discovery-service:
     container_name: discovery-service
     image: app/discovery-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "8761:8761"
     networks:
@@ -66,6 +68,8 @@ services:
   gateway-service:
     container_name: gateway-service
     image: app/gateway-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     ports:
       - "8222:8222"
     depends_on:
@@ -73,31 +77,35 @@ services:
       - discovery-service
     networks:
       - spring-boot-net
-#  customer-service:
-#    container_name: customer-service
-#    image: app/customer-service:latest
-#    ports:
-#      - "8090:8090"
-#    depends_on:
-#      - zipkin
-#      - discovery-service
-#      - gateway-service
-#      - postgres
-#      - broker
-#    networks:
-#      - spring-boot-net
-#  fraud-service:
-#    container_name: fraud-service
-#    image: app/fraud-service:latest
-#    ports:
-#      - "8082:8082"
-#    depends_on:
-#      - zipkin
-#      - discovery-service
-#      - gateway-service
-#      - postgres
-#    networks:
-#      - spring-boot-net
+  customer-service:
+    container_name: customer-service
+    image: app/customer-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8090:8090"
+    depends_on:
+      - zipkin
+      - discovery-service
+      - gateway-service
+      - postgres
+      - broker
+    networks:
+      - spring-boot-net
+  fraud-service:
+    container_name: fraud-service
+    image: app/fraud-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8082:8082"
+    depends_on:
+      - zipkin
+      - discovery-service
+      - gateway-service
+      - postgres
+    networks:
+      - spring-boot-net
 
   zipkin:
     container_name: zipkin

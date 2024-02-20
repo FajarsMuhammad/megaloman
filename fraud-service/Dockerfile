@@ -1,7 +1,7 @@
 FROM openjdk:21-jdk
 
-COPY target/fraud-service.jar /app/fraud-service.jar
+COPY target/fraud-service.jar fraud-service.jar
 
-EXPOSE 9000
+EXPOSE 8082
 
-CMD ["java", "-jar", "fraud-service.jar"]
+CMD ["java", "-jar", "/fraud-service.jar"]

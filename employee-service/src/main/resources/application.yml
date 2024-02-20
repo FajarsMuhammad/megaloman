@@ -1,27 +1,30 @@
 server:
-  port: 8082
+  port: 8083
 spring:
   application:
-    name: fraud-service
+    name: employee-service
 #  config:
 #    import: optional:configserver:http://localhost:8888
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres:5432/fraud
-    username: 'megalomancode'
-    password: 'password'
+
+datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/customer #change to container name on host
+  username: 'megalomancode'
+  password: 'password'
   jpa:
     hibernate:
       ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+
 eureka:
   instance:
     hostname: localhost
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
 management:
   tracing:
     sampling:

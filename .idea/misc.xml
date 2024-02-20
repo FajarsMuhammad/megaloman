@@ -8,13 +8,14 @@
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/employee-service/pom.xml" />
+        <option value="$PROJECT_DIR$/customer-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/base-domains/pom.xml" />
         <option value="$PROJECT_DIR$/consumer/pom.xml" />
-        <option value="$PROJECT_DIR$/employee-service/pom.xml" />
         <option value="$PROJECT_DIR$/uc-service/pom.xml" />
       </set>
     </option>
