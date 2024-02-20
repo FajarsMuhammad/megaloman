@@ -34,7 +34,7 @@ eureka:
 
 application:
   config:
-    fraud-url: http://localhost:8222/api/v1/frauds
+    fraud-url: http://fraud-service:8082/api/v1/frauds
 
 management:
   tracing:
