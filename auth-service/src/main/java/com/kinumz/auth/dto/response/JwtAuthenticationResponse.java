@@ -12,4 +12,10 @@ public class JwtAuthenticationResponse {
     String token;
     String username;
     String name;
+
+    String msg;
+
+    public static JwtAuthenticationResponse failed(){
+        return JwtAuthenticationResponse.builder().msg("Failed to authenticate").build();
+    }
 }

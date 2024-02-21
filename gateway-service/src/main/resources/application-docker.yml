@@ -19,12 +19,12 @@ spring:
         locator:
           enabled: false
       routes:
-        - id: customers
+        - id: customer-service
           uri: http://customer-service:8090
           predicates:
             - Path=/api/v1/customers/** #to redirect http://localhost:8090 to /api/v1/customers/**
-        - id: frauds
-          uri: http://fraud-service:8081
+        - id: fraud-service
+          uri: http://fraud-service:8082
           predicates:
             - Path=/api/v1/frauds/**
 management:

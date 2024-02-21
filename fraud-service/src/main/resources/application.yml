@@ -7,7 +7,7 @@ spring:
 #    import: optional:configserver:http://localhost:8888
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres:5432/fraud
+    url: jdbc:postgresql://localhost:5432/megaloman
     username: 'megalomancode'
     password: 'password'
   jpa:
