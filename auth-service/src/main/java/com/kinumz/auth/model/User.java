@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,21 +19,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User extends AuditingEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "user_id_sequence", sequenceName = "user_id_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_sequence")
     private Long id;
 
+    @Column
     private String username;
 
+    @Column
     private String password;
 
+    @Column
     private String name;
 
     @Enumerated(EnumType.ORDINAL)
-    @Column(columnDefinition = "tinyint", nullable = false)
+    @Column(columnDefinition = "int2", nullable = false)
     private Role role;
 
     public User withCreatedBy(String createdBy) {

@@ -2,6 +2,7 @@ package com.kinumz.gateway.config;
 
 import com.kinumz.gateway.service.JwtUtils;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -30,18 +31,21 @@ public class AuthenticationFilter implements GatewayFilter {
                 return onError(exchange, HttpStatus.UNAUTHORIZED);
             }
 
-            final String token = request.getHeaders().getOrEmpty("Authorization").get(0);
+            String token = request.getHeaders().getOrEmpty("Authorization").get(0);
+            if (StringUtils.isNotEmpty(token) && StringUtils.startsWith(token, "Bearer ")) {
+                token = token.substring(7);
+            }
 
             if (jwtUtils.isExpired(token)) {
                 return onError(exchange, HttpStatus.UNAUTHORIZED);
             }
         }
-        
+
         return chain.filter(exchange);
     }
 
     private boolean authMissing(ServerHttpRequest request) {
-        return request.getHeaders().containsKey("Authorization");
+        return !request.getHeaders().containsKey("Authorization");
     }
 
     private Mono<Void> onError(ServerWebExchange exchange, HttpStatus httpStatus) {

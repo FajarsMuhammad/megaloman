@@ -8,8 +8,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/megaloman
-    username: 'megalomancode'
-    password: 'password'
+    username:
+    password:
   jpa:
     hibernate:
       ddl-auto: update
