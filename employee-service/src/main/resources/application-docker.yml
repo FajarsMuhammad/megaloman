@@ -5,9 +5,9 @@ spring:
     name: employee-service
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/megaloman #change to container name on host
-    username:
-    password:
+    url: jdbc:postgresql://postgres:5432/employee #change to container name on host
+    username: 'megalomancode'
+    password: 'password'
   jpa:
     hibernate:
       ddl-auto: update

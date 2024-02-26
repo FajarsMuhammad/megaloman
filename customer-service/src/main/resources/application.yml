@@ -3,8 +3,6 @@ server:
 spring:
   application:
     name: customer-service
-#  config:
-#    import: optional:configserver:http://localhost:8888
   kafka:
     customer-topic: megaloman-customer
     producer:
@@ -12,7 +10,6 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       #value-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/megaloman #change to container name on host
@@ -24,6 +21,9 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+  openfeign:
+    circuitbreaker:
+      enabled: true
 
 eureka:
   instance:

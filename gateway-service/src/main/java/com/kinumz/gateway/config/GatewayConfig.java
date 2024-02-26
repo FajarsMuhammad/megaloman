@@ -22,6 +22,12 @@ public class GatewayConfig {
             .route("customer-service", r -> r.path("/api/v1/customers/**")
                 .filters(f -> f.filter(filter))
                 .uri("lb://CUSTOMER-SERVICE"))
+            .route("user-service", r -> r.path("/api/v1/users/**")
+                .filters(f -> f.filter(filter))
+                .uri("lb://USER-SERVICE"))
+            .route("employee-service", r -> r.path("/api/v1/employees/**")
+                .filters(f -> f.filter(filter))
+                .uri("lb://EMPLOYEE-SERVICE"))
             .build();
 
     }

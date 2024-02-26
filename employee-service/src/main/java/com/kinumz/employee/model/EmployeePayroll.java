@@ -1,4 +1,4 @@
-package com.kinumz.employee;
+package com.kinumz.employee.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

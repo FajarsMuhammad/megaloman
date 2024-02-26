@@ -39,9 +39,14 @@ public class AuthenticationFilter implements GatewayFilter {
             if (jwtUtils.isExpired(token)) {
                 return onError(exchange, HttpStatus.UNAUTHORIZED);
             }
+            //pass header using @RequestHeader on controller
+            request = exchange.getRequest()
+                .mutate()
+                .header("username", jwtUtils.extractUserName(token))
+                .build();
         }
 
-        return chain.filter(exchange);
+        return chain.filter(exchange.mutate().request(request).build());
     }
 
     private boolean authMissing(ServerHttpRequest request) {

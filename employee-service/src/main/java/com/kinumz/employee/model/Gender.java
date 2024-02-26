@@ -1,4 +1,4 @@
-package com.kinumz.employee;
+package com.kinumz.employee.model;
 
 public enum Gender {
 
