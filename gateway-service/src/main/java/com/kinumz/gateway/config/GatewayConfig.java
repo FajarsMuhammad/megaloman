@@ -28,6 +28,9 @@ public class GatewayConfig {
             .route("employee-service", r -> r.path("/api/v1/employees/**")
                 .filters(f -> f.filter(filter))
                 .uri("lb://EMPLOYEE-SERVICE"))
+            .route("fraud-service", r -> r.path("/api/v1/frauds/**")
+                .filters(f -> f.filter(filter))
+                .uri("lb://FRAUD-SERVICE"))
             .build();
 
     }
