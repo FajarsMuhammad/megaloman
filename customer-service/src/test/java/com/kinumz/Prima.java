@@ -25,9 +25,28 @@ public class Prima {
         return true;
     }
 
+    public String fibonacci(int n) {
+        StringBuilder result = new StringBuilder();
+        int one = 0;
+        int two = 1;
+        for (int i = 0; i < n; i++) {
+            result.append(one).append(" ");
+            int temp = one + two;
+            one = two;
+            two = temp;
+        }
+
+        return result.toString();
+    }
+
     @Test
     public void primeTest() {
         System.out.println(prime(100));
+    }
+
+    @Test
+    public void fiboTest() {
+        System.out.println("fibonacci : " + fibonacci(10));
     }
 
 }

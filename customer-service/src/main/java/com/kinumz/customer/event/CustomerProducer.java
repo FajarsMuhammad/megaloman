@@ -1,4 +1,4 @@
-package com.kinumz.customer;
+package com.kinumz.customer.event;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

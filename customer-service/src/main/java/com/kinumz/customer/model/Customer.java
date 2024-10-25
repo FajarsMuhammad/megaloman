@@ -1,4 +1,4 @@
-package com.kinumz.customer;
+package com.kinumz.customer.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

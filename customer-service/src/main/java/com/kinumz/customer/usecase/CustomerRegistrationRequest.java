@@ -1,4 +1,4 @@
-package com.kinumz.customer;
+package com.kinumz.customer.usecase;
 
 public record CustomerRegistrationRequest(String firstName, String lastName, String email) {
 

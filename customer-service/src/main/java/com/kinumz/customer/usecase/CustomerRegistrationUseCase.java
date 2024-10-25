@@ -1,12 +1,15 @@
-package com.kinumz.customer;
+package com.kinumz.customer.usecase;
 
+import com.kinumz.customer.model.Customer;
+import com.kinumz.customer.repository.CustomerJpaRepository;
+import com.kinumz.customer.event.CustomerProducer;
 import com.kinumz.customer.client.FraudClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerService {
+public class CustomerRegistrationUseCase {
 
     private final CustomerJpaRepository customerJpaRepository;
 
@@ -31,11 +34,11 @@ public class CustomerService {
 //            FraudCheckResponse.class, customer.getId()
 //        );
 
-        var response = fraudClient.isFraudSter(customer.getId());
-
-        if (response.isFraudster()) {
-            throw new IllegalArgumentException("Not Fraudster");
-        }
+//        var response = fraudClient.isFraudSter(customer.getId());
+//
+//        if (response.isFraudster()) {
+//            throw new IllegalArgumentException("Not Fraudster");
+//        }
 
 //        customerProducer.sendMessage(
 //            new CustomerEvent(customer.getId(), customer.getFirstName())

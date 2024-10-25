@@ -1,4 +1,4 @@
-package com.kinumz.customer;
+package com.kinumz.customer.usecase;
 
 import lombok.Builder;
 import lombok.Value;
