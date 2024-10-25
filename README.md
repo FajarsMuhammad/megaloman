@@ -54,3 +54,10 @@ curl --location 'localhost:8222/api/v1/customers' \
     "email": "fajar01@gmail.com"
 }'
 ```
+
+- Using Docker
+```
+- Docker Build from docker file
+docker build -t app/name-service .
+docker-compose up -d
+```
